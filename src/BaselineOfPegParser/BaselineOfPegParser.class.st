@@ -11,8 +11,6 @@ BaselineOfPegParser >> baseline: spec [
 		for: #common
 		do: [
 			self petitParser: spec.
-			spec repository: 'github://johnhwoods/PegParser'.
-			spec package: 'PegParser'
 		]
 
 ]
