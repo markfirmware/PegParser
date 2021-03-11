@@ -1,7 +1,7 @@
 Class {
 	#name : #ManifestPegParser,
 	#superclass : #PackageManifest,
-	#category : #'_PegParser'
+	#category : #'PegParser'
 }
 
 { #category : #'code-critics' }
