@@ -15,7 +15,7 @@ Class {
 		'zigCOMMA',
 		'zigTopLevelDecl'
 	],
-	#category : #'_PegParser'
+	#category : #'PegParser'
 }
 
 { #category : #accessing }
