@@ -1,7 +1,7 @@
 Class {
 	#name : #PegHandEvaluator,
 	#superclass : #PegHandParser,
-	#category : #'_PegParser'
+	#category : #'PegParser'
 }
 
 { #category : #accessing }
