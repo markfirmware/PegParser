@@ -11,7 +11,7 @@ BaselineOfPegParser >> baseline: spec [
 		for: #common
 		do: [
 			self petitParser: spec.
-			spec package: 'PegParser'
+"			spec package: 'PegParser'"
 		]
 
 ]
@@ -20,5 +20,5 @@ BaselineOfPegParser >> baseline: spec [
 BaselineOfPegParser >> petitParser: spec [
 	spec
 		baseline: 'PetitParser'
-		with: [ spec repository: 'github://moosetechnology/PetitParser/src' ]
+		with: [ spec repository: 'github://moosetechnology/PetitParser/releases/tag/v2.2.0' ]
 ]
