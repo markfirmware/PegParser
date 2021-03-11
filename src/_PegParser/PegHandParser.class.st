@@ -99,7 +99,7 @@ Class {
 		'pegComment',
 		'pegEndOfLine'
 	],
-	#category : #'_PegParser'
+	#category : #'PegParser'
 }
 
 { #category : #'grammar-operators' }
