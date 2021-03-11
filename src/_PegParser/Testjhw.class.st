@@ -1,5 +1,5 @@
 Class {
-	#name : #Testjhw,
+	#name : #Testjhw1,
 	#superclass : #Object,
-	#category : #'_PegParser'
+	#category : #'PegParser'
 }
