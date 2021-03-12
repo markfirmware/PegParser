@@ -1,0 +1,18 @@
+name: continuous testing
+
+on:
+  push:
+  schedule:
+    - cron: '10 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test
+        run: |
+          ./test.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
