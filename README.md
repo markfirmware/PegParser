@@ -11,13 +11,13 @@ install Petit Parser first:
 ```Smalltalk
 Metacello new
   baseline: 'PetitParser';
-  repository: 'github://moosetechnology/PetitParser';
+  repository: 'github://moosetechnology/PetitParser/src';
   onConflictUseIncoming;
   load.
 
 Metacello new
   baseline: 'PegParser';
-  repository: 'github://johnhwoods/PegParser';
+  repository: 'github://johnhwoods/PegParser/src';
   onConflictUseIncoming;
   load.
  ```
