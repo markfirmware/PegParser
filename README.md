@@ -19,7 +19,8 @@ Metacello new
   baseline: 'PegParser';
   repository: 'github://johnhwoods/PegParser';
   onConflictUseIncoming;
-  load.```
+  load.
+ ```
 
 The comment for `PegHandParser` is a valid PEG - it is the PEG that
 defines PEGS with some additional PEG (ie #...) comments.  So the raw
