@@ -1,6 +1,6 @@
 Class {
 	#name : #ZigParser,
-	#superclass : #PPCompositeParser,
+	#superclass : #PP2CompositeNode,
 	#instVars : [
 		'zigRoot',
 		'zig_skip',
@@ -15,7 +15,7 @@ Class {
 		'zigCOMMA',
 		'zigTopLevelDecl'
 	],
-	#category : #'PegParser'
+	#category : #PegParser
 }
 
 { #category : #accessing }

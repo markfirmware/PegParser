@@ -64,7 +64,7 @@
 "
 Class {
 	#name : #PegHandParser,
-	#superclass : #PPCompositeParser,
+	#superclass : #PP2CompositeNode,
 	#instVars : [
 		'pegGrammar',
 		'pegSpacing',
@@ -99,18 +99,18 @@ Class {
 		'pegComment',
 		'pegEndOfLine'
 	],
-	#category : #'PegParser'
+	#category : #PegParser
 }
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegAND [
-	^ $& asParser , pegSpacing
+	^ $& asPParser , pegSpacing
  
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegAction [
-	^ ${ asParser , $} asParser negate star , $} asParser , pegSpacing
+	^ ${ asPParser , $} asPParser negate star , $} asPParser , pegSpacing
 	
 
 
@@ -118,33 +118,33 @@ PegHandParser >> pegAction [
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegBEGIN [
-	^ $< asParser , pegSpacing
+	^ $< asPParser , pegSpacing
  
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegCLOSE [
-	^ $) asParser , pegSpacing
+	^ $) asPParser , pegSpacing
  
 ]
 
 { #category : #grammar }
 PegHandParser >> pegChar [            
-	^ ( $\ asParser , '"''[\]abefnrtv' asArray asParser )
- 	/ ( $\ asParser , '0123' asArray asParser , '01234567' asArray asParser , '01234567' asArray asParser )
-	/ ( $\ asParser , '01234567' asArray asParser , '01234567' asArray asParser optional )
-	/ ( $\ asParser , $- asParser )
-	/ ( $\ asParser not , #any asParser )
+	^ ( $\ asPParser , '"''[\]abefnrtv' asSet asPParser )
+ 	/ ( $\ asPParser , '0123' asSet asPParser , '01234567' asSet asPParser , '01234567' asSet asPParser )
+	/ ( $\ asPParser , '01234567' asSet asPParser , '01234567' asSet asPParser optional )
+	/ ( $\ asPParser , $- asPParser )
+	/ ( $\ asPParser not , #any asPParser )
 ]
 
 { #category : #grammar }
 PegHandParser >> pegClass [
-	^ $[ asParser , ( $] asParser not, pegRange ) star , $] asParser , pegSpacing
+	^ $[ asPParser , ( $] asPParser not, pegRange ) star , $] asPParser , pegSpacing
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegComment [ 
-	^ $# asParser , ( pegEndOfLine not , #any asParser ) star , pegEndOfLine 
+	^ $# asPParser , ( pegEndOfLine not , #any asPParser ) star , pegEndOfLine 
 	
 	"NB could use starLazy: ?"
 
@@ -152,7 +152,7 @@ PegHandParser >> pegComment [
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegDOT [
-	^ $. asParser , pegSpacing
+	^ $. asPParser , pegSpacing
  
 ]
 
@@ -163,21 +163,21 @@ PegHandParser >> pegDefinition [
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegEND [
-	^ $> asParser , pegSpacing
+	^ $> asPParser , pegSpacing
  
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegEndOfFile [
-	^ #any asParser not
+	^ #any asPParser not
 
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegEndOfLine [
-	^ (String crlf asParser
-	/ Character lf asParser 
-	/ Character cr asParser) plus
+	^ (String crlf asPParser
+	/ Character lf asPParser 
+	/ Character cr asPParser) plus
 
 ]
 
@@ -193,7 +193,7 @@ PegHandParser >> pegGrammar [
 
 { #category : #grammar }
 PegHandParser >> pegIdentCont [
-	^ PPPredicateObjectParser anyOf: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
+	^ PP2PredicateObjectNode anyOf: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
 	
 
 
@@ -201,7 +201,7 @@ PegHandParser >> pegIdentCont [
 
 { #category : #grammar }
 PegHandParser >> pegIdentStart [
-	^ PPPredicateObjectParser anyOf: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
+	^ PP2PredicateObjectNode anyOf: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz'
 ]
 
 { #category : #grammar }
@@ -212,32 +212,32 @@ PegHandParser >> pegIdentifier [
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegLEFTARROW [
-	^ '<-' asParser , pegSpacing
+	^ '<-' asPParser , pegSpacing
  
 ]
 
 { #category : #grammar }
 PegHandParser >> pegLiteral [
-	^ ( $' asParser , ( $' asParser not , pegChar ) star , $' asParser , pegSpacing )
-	/ ( $" asParser , ( $" asParser not , pegChar ) star , $" asParser , pegSpacing )
+	^ ( $' asPParser , ( $' asPParser not , pegChar ) star , $' asPParser , pegSpacing )
+	/ ( $" asPParser , ( $" asPParser not , pegChar ) star , $" asPParser , pegSpacing )
 
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegNOT [
-	^ $! asParser , pegSpacing
+	^ $! asPParser , pegSpacing
  
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegOPEN [
-	^ $( asParser , pegSpacing
+	^ $( asPParser , pegSpacing
  
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegPLUS [
-	^ $+ asParser , pegSpacing
+	^ $+ asPParser , pegSpacing
  
 ]
 
@@ -264,26 +264,26 @@ PegHandParser >> pegPrimary [
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegQUERY [
-	^ $? asParser , pegSpacing
+	^ $? asPParser , pegSpacing
  
 ]
 
 { #category : #grammar }
 PegHandParser >> pegRange [
-	^ ( pegChar , $- asParser , pegChar )
+	^ ( pegChar , $- asPParser , pegChar )
 	/ pegChar
 
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegSLASH [
-	^ $/ asParser , pegSpacing
+	^ $/ asPParser , pegSpacing
  
 ]
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegSTAR [
-	^ $* asParser , pegSpacing
+	^ $* asPParser , pegSpacing
  
 ]
 
@@ -294,8 +294,8 @@ PegHandParser >> pegSequence [
 
 { #category : #'grammar-operators' }
 PegHandParser >> pegSpace [ 
-	^ Character space asParser
-	/ Character tab asParser 
+	^ Character space asPParser
+	/ Character tab asPParser 
 	/ pegEndOfLine
  
 ]

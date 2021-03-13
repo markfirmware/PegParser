@@ -1,1 +1,1 @@
-Package { #name : #'PegParser' }
+Package { #name : #PegParser }

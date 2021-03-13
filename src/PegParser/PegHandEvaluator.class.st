@@ -1,13 +1,8 @@
 Class {
 	#name : #PegHandEvaluator,
 	#superclass : #PegHandParser,
-	#category : #'PegParser'
+	#category : #PegParser
 }
-
-{ #category : #accessing }
-PegHandEvaluator >> comment [
-	^ super comment flatten
-]
 
 { #category : #accessing }
 PegHandEvaluator >> pegComment [
