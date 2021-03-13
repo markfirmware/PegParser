@@ -10,14 +10,14 @@ BaselineOfPegParser >> baseline: spec [
 	spec 
 		for: #common
 		do: [
-			self petitParser: spec.
+			self petitParser2: spec.
 		]
 
 ]
 
 { #category : #baselines }
-BaselineOfPegParser >> petitParser: spec [
+BaselineOfPegParser >> petitParser2: spec [
 	spec
-		baseline: 'PetitParser'
-		with: [ spec repository: 'github://moosetechnology/PetitParser/src' ]
+		baseline: 'PetitParser2'
+		with: [ spec repository: 'github://kursjan/petitparser2' ]
 ]
